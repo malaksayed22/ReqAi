@@ -29,7 +29,7 @@ export function InputView({ theme, onGenerate, selectedModel, onModelChange, loa
   };
 
   return (
-    <main className="max-w-2xl mx-auto px-6 py-16 pb-24">
+    <main className="max-w-2xl mx-auto px-4 sm:px-6 py-8 sm:py-16 pb-20 sm:pb-24">
       {/* Hero badge */}
       <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-[11px] font-semibold uppercase tracking-widest mb-7 border"
         style={{
@@ -50,7 +50,7 @@ export function InputView({ theme, onGenerate, selectedModel, onModelChange, loa
         </span>
       </h1>
 
-      <p className={`text-[17px] leading-relaxed mb-10 max-w-lg ${dark ? "text-slate-400" : "text-slate-500"}`}>
+      <p className={`text-[15px] sm:text-[17px] leading-relaxed mb-7 sm:mb-10 max-w-lg ${dark ? "text-slate-400" : "text-slate-500"}`}>
         Describe your challenge in plain language. ReqAI generates a complete, executive-ready requirements document with functional specs, tech stack, timeline, and risk flags — in seconds.
       </p>
 
@@ -118,7 +118,7 @@ export function InputView({ theme, onGenerate, selectedModel, onModelChange, loa
         type="button"
         onClick={handleSubmit}
         disabled={loading}
-        className="flex items-center gap-2.5 px-6 py-3.5 rounded-xl font-semibold text-sm text-white bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-[0_4px_24px_rgba(99,102,241,0.35)] hover:shadow-[0_8px_32px_rgba(99,102,241,0.45)] hover:-translate-y-0.5 active:translate-y-0"
+        className="w-full sm:w-auto flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl font-semibold text-sm text-white bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-[0_4px_24px_rgba(99,102,241,0.35)] hover:shadow-[0_8px_32px_rgba(99,102,241,0.45)] hover:-translate-y-0.5 active:translate-y-0"
       >
         <Sparkles size={15} />
         Generate Requirements Document

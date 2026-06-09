@@ -11,7 +11,7 @@ function StreamPreview({ text, dark }: { text: string; dark: boolean }) {
   // Highlight ### headers
   const chunks = text.split(/^(### .+)$/m);
   return (
-    <pre className={`whitespace-pre-wrap font-mono text-[13px] leading-7 break-words ${dark ? "text-slate-400" : "text-slate-600"}`}>
+    <pre className={`whitespace-pre-wrap font-mono text-[13px] leading-7 wrap-break-word ${dark ? "text-slate-400" : "text-slate-600"}`}>
       {chunks.map((chunk, i) =>
         chunk.startsWith("### ") ? (
           <span key={i} className="text-indigo-400 font-semibold">{chunk}</span>
@@ -28,11 +28,11 @@ export function GeneratingView({ theme, streamText }: GeneratingViewProps) {
   const dark = theme === "dark";
 
   return (
-    <main className="max-w-screen-lg mx-auto px-6 py-10 pb-24">
+    <main className="max-w-5xl mx-auto px-4 sm:px-6 py-6 sm:py-10 pb-20 sm:pb-24">
       {/* Header */}
-      <div className="flex items-center justify-between mb-8">
+      <div className="flex flex-wrap items-start sm:items-center justify-between gap-3 mb-6 sm:mb-8">
         <div>
-          <h2 className={`text-xl font-bold tracking-tight ${dark ? "text-white" : "text-slate-900"}`}>
+          <h2 className={`text-lg sm:text-xl font-bold tracking-tight ${dark ? "text-white" : "text-slate-900"}`}>
             Generating Requirements Document
           </h2>
           <p className={`text-sm mt-1 ${dark ? "text-slate-500" : "text-slate-400"}`}>
@@ -41,12 +41,13 @@ export function GeneratingView({ theme, streamText }: GeneratingViewProps) {
         </div>
         <div className="flex items-center gap-2 text-violet-400 text-xs font-semibold uppercase tracking-widest">
           <span className="w-2 h-2 rounded-full bg-violet-400 animate-pulse" />
-          Live Streaming
+          <span className="hidden sm:inline">Live Streaming</span>
+          <span className="sm:hidden">Live</span>
         </div>
       </div>
 
       {/* Stream box */}
-      <div className={`rounded-xl border p-6 min-h-[440px] relative overflow-auto transition-colors
+      <div className={`rounded-xl border p-4 sm:p-6 min-h-70 sm:min-h-110 relative overflow-auto transition-colors
         ${dark ? "bg-slate-900/70 border-slate-800" : "bg-white border-slate-200"}`}>
         {streamText
           ? <StreamPreview text={streamText} dark={dark} />

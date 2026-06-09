@@ -45,7 +45,7 @@ export function SectionCard({ section, index, theme }: SectionCardProps) {
     >
       {/* Card header */}
       <div
-        className="flex items-center gap-3 px-5 py-4 border-b"
+        className="flex items-center gap-3 px-4 sm:px-5 py-3.5 sm:py-4 border-b"
         style={{ borderColor: dark ? "#1e293b" : "#e2e8f0" }}
       >
         <div
@@ -74,7 +74,7 @@ export function SectionCard({ section, index, theme }: SectionCardProps) {
       </div>
 
       {/* Card body */}
-      <div className="px-5 py-4">
+      <div className="px-4 sm:px-5 py-4">
         <SectionBody content={section.content} accent={section.accent} />
       </div>
     </div>

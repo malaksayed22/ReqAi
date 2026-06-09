@@ -120,11 +120,11 @@ export function ResultsView({ theme, sections, rawDocument, generatedAt, wordCou
   });
 
   return (
-    <main className="max-w-screen-xl mx-auto px-6 py-8 pb-24">
+    <main className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8 pb-20 sm:pb-24">
       {/* Top bar */}
-      <div className="flex flex-wrap items-start justify-between gap-4 mb-6">
-        <div className="flex flex-wrap items-center gap-3">
-          <h2 className={`text-xl font-bold tracking-tight ${dark ? "text-white" : "text-slate-900"}`}>
+      <div className="flex flex-wrap items-start justify-between gap-3 mb-6">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+          <h2 className={`text-lg sm:text-xl font-bold tracking-tight ${dark ? "text-white" : "text-slate-900"}`}>
             Requirements Document
           </h2>
           {!error && (
@@ -135,7 +135,7 @@ export function ResultsView({ theme, sections, rawDocument, generatedAt, wordCou
                 Generated
               </div>
               {dateStr && (
-                <span className={`text-xs font-mono ${dark ? "text-slate-600" : "text-slate-400"}`}>
+                <span className={`hidden sm:inline text-xs font-mono ${dark ? "text-slate-600" : "text-slate-400"}`}>
                   {dateStr}
                 </span>
               )}
@@ -144,15 +144,15 @@ export function ResultsView({ theme, sections, rawDocument, generatedAt, wordCou
         </div>
 
         {!error && (
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 w-full sm:w-auto">
             <button onClick={handleCopy}
-              className={`flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-medium border transition-all
+              className={`flex-1 sm:flex-none flex items-center justify-center gap-2 px-3.5 py-2 rounded-lg text-xs font-medium border transition-all
                 ${dark ? "border-slate-700 text-slate-400 hover:text-white hover:bg-slate-800" : "border-slate-200 text-slate-500 hover:text-slate-900 hover:bg-slate-50"}`}>
               {copyState === "copied" ? <Check size={13} /> : <Copy size={13} />}
               {copyState === "copied" ? "Copied!" : "Copy Markdown"}
             </button>
             <button onClick={handlePDF}
-              className="flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-500 border border-indigo-500 transition-all shadow-[0_2px_12px_rgba(99,102,241,0.3)]">
+              className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-3.5 py-2 rounded-lg text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-500 border border-indigo-500 transition-all shadow-[0_2px_12px_rgba(99,102,241,0.3)]">
               {pdfLoading
                 ? <span className="w-3 h-3 rounded-full border-2 border-white border-t-transparent animate-spin" />
                 : <Download size={13} />}
@@ -165,7 +165,7 @@ export function ResultsView({ theme, sections, rawDocument, generatedAt, wordCou
       {/* Error state */}
       {error && (
         <div className="rounded-xl border border-red-500/20 bg-red-500/5 p-6 flex gap-4 items-start mb-8">
-          <div className="w-11 h-11 rounded-xl bg-red-500/10 border border-red-500/20 flex items-center justify-center flex-shrink-0">
+          <div className="w-11 h-11 rounded-xl bg-red-500/10 border border-red-500/20 flex items-center justify-center shrink-0">
             <AlertTriangle size={20} className="text-red-400" />
           </div>
           <div>
@@ -196,6 +196,27 @@ export function ResultsView({ theme, sections, rawDocument, generatedAt, wordCou
               <span className="w-1.5 h-1.5 rounded-full bg-indigo-500" />
               {c.label}
             </div>
+          ))}
+        </div>
+      )}
+
+      {/* Mobile section nav (visible below lg) */}
+      {!error && sections.length > 0 && (
+        <div className="lg:hidden flex gap-2 overflow-x-auto pb-2 mb-4 no-scrollbar">
+          {sections.map((sec) => (
+            <button
+              key={sec.title}
+              onClick={() => handleSelectSection(sec.title)}
+              type="button"
+              className="shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-semibold border whitespace-nowrap transition-all"
+              style={{
+                color: activeSection === sec.title ? "#fff" : sec.accent,
+                borderColor: `${sec.accent}40`,
+                background: activeSection === sec.title ? sec.accent : `${sec.accent}12`,
+              }}
+            >
+              {sec.label}
+            </button>
           ))}
         </div>
       )}

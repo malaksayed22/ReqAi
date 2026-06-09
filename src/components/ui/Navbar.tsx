@@ -23,7 +23,7 @@ export function Navbar({ theme, onToggleTheme, showReset, onReset, selectedModel
         borderColor: dark ? "#1e293b" : "#e2e8f0",
       }}
     >
-      <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center gap-2.5">
           <div className="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center shadow-[0_0_20px_rgba(99,102,241,0.4)]">
